@@ -1,0 +1,32 @@
+create table products
+(
+    id              serial
+        primary key,
+    name            varchar(255) not null,
+    coordinates_x   bigint,
+    coordinates_y   integer,
+    creation_date   text,
+    price integer,
+    unit_of_measure varchar(255),
+    manufacturer_id bigint, 
+    manufacturer_name text,
+    manufacturer_full_name text,
+    manufacturer_type varchar(255),
+    user_id        integer
+        references users
+            on delete cascade
+);
+
+create table users
+(
+    id       serial
+        primary key,
+    login    varchar(255) not null
+        unique,
+    password varchar(255) not null,
+    salt text 
+);
+
+
+
+
